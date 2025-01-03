@@ -1,0 +1,114 @@
+Library ID,Library ID Shortform,Polymer,Colour,Morphology,Source,Laser (nm),Grating ,Slit (um),Filter (%),Hole size (nm),Acq. Time (s),Accumulation,Delay (s)
+Polyethylene 1. Blue Sphere,PE 1,PE,Blue,Sphere,San Francisco Stormwater,532,1200,100,25,300,4,4,0
+Polyethylene 10. Light Blue Film,PE 10,PE,Light Blue,Film,San Francisco Stormwater,532,1200,100,10,300,4,4,0
+Polyethylene 11. Light Blue Film,PE 11,PE,Light Blue,Film,San Francisco Stormwater,532,1200,100,25,300,4,4,0
+Polyethylene 12. Blue Fragment,PE 12,PE,Blue,Fragment,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polyethylene 13. Black Fragment,PE 13,PE,Black,Fragment,Lake Ontario Fish,532,1200,100,25,100,8,8,0
+Polyethylene 14. Pink Fragment,PE 14,PE,Pink,Fragment,Lake Ontario Fish,532,1200,100,100,100,8,8,0
+Polyethylene 15. Purple Sphere,PE 15,Oxidized PE,Purple,Sphere,Lake Ontario Fish,532,1200,100,50,100,8,8,0
+Polyethylene 16. Clear Fragment,PE 16,PE,Clear,Fragment,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polyethylene 18. Green Fragment,PE 18,PE,Green,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polyethylene 19. White Fragment,PE 19,PE,White,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polyethylene 2. White Foam,PE 2,PE,White,Foam,San Francisco Surface Water,532,1200,100,100,100,10,10,0
+Polyethylene 20. Blue Film,PE 20,PE,Blue,Film,San Francisco Stormwater,532,1200,100,25,100,4,4,0
+Polyethylene 21. Blue Film,PE 21,PE,Blue,Film,San Francisco Stormwater,532,1200,100,100,100,4,4,0
+Polyethylene 22. Blue Foam,PE 22,PE,Blue,Foam,San Francisco Surface Water,532,1200,100,100,100,4,4,0
+Polyethylene 23. White Foam,PE 23,PE,White,Foam,San Francisco Surface Water,532,1200,100,100,300,4,4,0
+Polyethylene 24. Brown Sphere,PE 24,PE,Brown,Sphere,San Francisco Surface Water,532,1200,100,100,300,4,4,0
+Polyethylene 25. Yellow Sphere,PE 25,PE,Yellow,Sphere,San Francisco Surface Water,532,1200,100,100,300,10,10,0
+Polyethylene 26. Orange Sphere,PE 26,PE,Orange,Sphere,San Francisco Surface Water,532,1200,100,25,300,10,10,0
+Polyethylene 27. Blue Fragment,PE 27,PE,Blue,Fragment,San Francisco Surface Water,532,1200,100,50,300,5,10,0
+Polyethylene 28. Clear Fragment,PE 28,PE,Clear,Fragment,San Francisco Surface Water,532,1200,100,100,300,5,10,0
+Polyethylene 4. Blue Sphere,PE 4,PE,Blue,Sphere,San Francisco Stormwater,532,1200,100,25,300,4,4,0
+Polyethylene 5. Grey Fragment,PE 5,PE,Grey,Fragment,San Francisco Surface Water,532,1200,100,10,300,4,4,0
+Polyethylene 6. Light Blue Fragment,PE 6,PE,Light Blue,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polyethylene 7. Blue Fragment,PE 7,PE,Blue,Fragment,San Francisco Stormwater,532,1200,100,10,300,8,8,0
+Polyethylene 8. Light Blue Film,PE 8,PE,Light Blue,Film,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polyethylene 9. Light Blue Film,PE 9,PE,Light Blue,Film,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polypropylene 1. Light Blue Fragment,PP 1,PP,Light Blue,Fragment,San Francisco Stormwater,532,1200,100,25,300,4,10,0
+Polypropylene 10. Brown Fiber,PP 10,PP,Brown,Fiber,Lake Ontario Fish,532,1200,100,50,300,8,8,0
+Polypropylene 11. Light Blue Fragment,PP 11,PP,Light Blue,Fragment,San Francisco Stormwater,532,1200,100,25,300,4,4,30
+Polypropylene 12. Green Fragment,PP 12,PP,Green,Fragment,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polypropylene 13. Pink Fiber,PP 13,PP,Pink,Fiber,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polypropylene 14. Green Fiber,PP 14,PP,Green,Fiber,San Francisco Stormwater,532,1200,100,10,300,4,4,0
+Polypropylene 15. Green Fiber,PP 15,PP,Green,Fiber,San Francisco Stormwater,785,600,100,50,300,4,4,0
+Polypropylene 16. White Fragment,PP 16,PP,White,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polypropylene 17. Purple Fiber,PP 17,PP,Purple,Fiber,San Francisco Fish,532,1200,100,100,100,4,10,30
+Polypropylene 18. Purple Foam,PP 18,PP,Purple,Foam,San Francisco Fish,785,600,100,100,300,10,10,0
+Polypropylene 19. Blue Fiber,PP 19,PP,Blue,Fiber,San Francisco Surface Water,532,1200,100,100,500,4,4,0
+Polypropylene 2. Light Blue Fragment,PP 2,PP,Light Blue,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polypropylene 20. Orange Fragment,PP 20,PP,Orange,Fragment,San Francisco Surface Water,532,1200,100,100,300,4,4,30
+Polypropylene 21. White Film,PP 21,PP,White,Film,San Francisco Surface Water,532,1200,100,100,300,4,4,0
+Polypropylene 3. Red Fiber,PP 3,PP,Red,Fiber,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Polypropylene 4. Green Fragment,PP 4,PP,Green,Fragment,San Francisco Stormwater,532,1200,100,25,300,4,4,0
+Polypropylene 5. Green Fiber,PP 5,PP,Green,Fiber,San Francisco Stormwater,785,600,100,100,300,4,10,0
+Polypropylene 6. Clear Fragment,PP 6,PP,Clear,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polypropylene 7. Green Fragment,PP 7,PP,Green,Fragment,San Francisco Stormwater,532,1200,100,10,300,4,4,0
+Polypropylene 8. Yellow Fragment,PP 8,PP,Yellow,Fragment,Lake Ontario Fish,532,1200,100,50,300,2,8,0
+Polypropylene 9. Blue Fiber,PP 9,PP,Blue,Fiber,Lake Ontario Fish,532,1200,100,100,300,8,8,0
+Polyester 1. Clear Fiber,Polyester 1 ,Polyester,Clear,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Polyester 10. Black Fiber,Polyester 10,Polyester,Black,Fiber,Lake Superior Fish,785,600,100,100,100,6,10,0
+Polyester 11. Blue Fiber,Polyester 11,Polyester,Blue,Fiber,San Francisco Surface Water,532,1200,100,10,300,4,4,0
+Polyester 2. Red Fiber,Polyester 2,Polyester,Red,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Polyester 3. Dark Blue Fiber,Polyester 3,Polyester,Dark Blue,Fiber,San Francisco Stormwater,785,600,100,100,300,4,10,0
+Polyester 4. Red Fiber,Polyester 4,Polyester,Red,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Polyester 5. Clear Fiber,Polyester 5,Polyester,Clear,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Polyester 6. Clear Fiber,Polyester 6,Polyester,Clear,Fiber,San Francisco Stormwater,532,1200,100,100,300,4,4,0
+Polyester 7. Pink Fiber,Polyester 7,Polyester,Pink,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Polyester 8. Red Fiber,Polyester 8,Polyester,Red,Fiber,San Francisco Stormwater,785,600,100,100,300,8,8,30
+Polyester 9. Purple Fiber,Polyester 9,Polyester,Purple,Fiber,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Polyester 12. Red Fiber ,Polyester 12,Polyester,Red,Fiber,Illinois Natural History Survey (Fish),785,600,100,100,300,6,10,0
+Polyethylene Terephthalate 1. Clear Fragment,PET 1,PET,Clear,Fragment,Lake Ontario Fish,532,1200,100,100,300,4,4,0
+Polystyrene 1. Yellow Fragment,PS 1,PS,Yellow,Fragment,San Francisco Stormwater,532,1200,100,10,300,8,8,0
+Polystyrene 2. Clear Sphere,PS 2,PS,Clear,Sphere,San Francisco Stormwater,532,1200,100,25,300,10,10,0
+Polystyrene 3. Blue Fragment,PS 3,PS,Blue,Fragment,Lake Ontario Fish,532,1200,100,50,300,4,4,0
+Polystyrene 4. White Film,PS 4,PS,White,Film,San Francisco Stormwater,532,1200,100,10,300,4,4,30
+Polystyrene 5. Black Foam,PS 5,PS,Black,Foam,San Francisco Stormwater,532,1200,100,100,300,8,8,0
+Polystyrene 6. Blue Fragment,PS 6,PS,Dark Blue,Fragment,San Francisco Fish,532,1200,100,10,300,4,4,0
+Polystyrene 7. Green Foam,PS 7,PS,Green,Foam,San Francisco Surface Water,532,1200,100,100,500,8,8,0
+Polystyrene 8. Blue Foam,PS 8,PS,Blue,Foam,San Francisco Surface Water,532,1200,100,50,500,4,4,0
+Polystyrene 9. Blue Foam,PS 9,PS,Blue,Foam,San Francisco Surface Water,532,1200,100,100,300,4,4,0
+Polyvinyl Chloride 2. Clear Fragment,PVC 2,PVC,Clear,Fragment,Lake Ontario Agriculture Watershed,532,1200,100,25,300,6,10,0
+Polyvinyl Chloride 3. Blue Fragment,PVC 3,PVC,Blue,Fragment,San Francisco Surface Water,532,1200,100,25,300,5,10,0
+Polyvinyl Chloride 4. Orange Foam,PVC 4,PVC,Orange,Foam,San Francisco Surface Water,532,1200,100,100,300,5,10,0
+Acrylonitrile Butadiene Styrene 1. Clear Fragment,ABS 1,ABS,Clear,Fragment,San Francisco Stormwater,532,1200,100,50,300,4,4,0
+Polymethyl Methacrylate 1. Clear Sphere,PMMA 1,PMMA,Clear,Sphere,San Francisco Fish,785,600,100,100,300,10,10,0
+Polymethyl Methacrylate 2. Clear Sphere,PMMA 2,PMMA,Clear,Sphere,San Francisco Fish,532,1200,100,25,300,10,10,0
+Polymethyl Methacrylate 3. Clear Fragment (Plexiglass),PMMA 3,PMMA,Clear,Fragment,San Francisco Stormwater,532,1200,100,100,300,8,8,0
+Polyurethane 1. Black Fiber,PU 1,PU,Black,Fiber,Lake Ontario Fish,785,600,100,100,300,10,10,0
+Polyurethane 2. Black Fiber,PU 2,PU,Black,Fiber,Lake Ontario Fish,785,600,100,100,300,10,10,0
+Polyurethane 3. White Fiber,PU 3,PU,White,Fiber,Lake Ontario Stormwater,532,1200,100,50,100,8,8,0
+Polyurethane 4. Pink Fragment,PU 4,PU,Pink,Fragment,San Francisco Surface Water,532,1200,100,1,300,10,10,0
+Polyurethane 5. Brown Foam,PU 5,PU,Brown,Foam,San Francisco Surface Water,532,1200,100,10,100,4,4,30
+Polyurethane 6. Yellow Foam,PU 6,PU,Yellow,Foam,San Francisco Surface Water,532,1200,50,10,500,5,10,0
+Polyamide 1. Blue Fragment,PA 1,Polyamide Resin,Blue,Fragment,Lake Ontario Fish,532,1200,100,100,100,10,10,0
+Polyamide 2. Pink Fiber,PA 2,Nylon,Pink,Fiber,Lake Ontario Stormwater,532,1200,100,50,100,8,10,0
+Polyamide 3. Pink Fiber,PA 3,Nylon,Pink,Fiber,Lake Ontario Stormwater,785,600,100,100,300,10,10,0
+Polyamide 4. Clear Fiber,PA 4,Nylon,Clear,Fiber,San Francisco Stormwater,532,1200,100,100,300,8,8,0
+Polyamide 5. Clear Fiber,PA 5,Nylon,Clear,Fiber,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Polyamide 6. Clear Film,PA 6,Nylon,Clear,Film,San Francisco Surface Water,532,1200,100,100,100,5,10,0
+Polyamide 7. Clear Fiber,PA 7,Nylon,Clear,Fiber,Illinois Natural History Survey (Fish),785,600,100,100,300,4,10,0
+Dyed Cellulose 1. Red Fiber,Dyed Cellulose 1,Modal,Red,Fiber,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Dyed Cellulose 2. Pink Fiber,Dyed Cellulose 2,Cellulose,Pink,Fiber,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Dyed Cellulose 3. Green Fiber,Dyed Cellulose 3,Cellulose,Green,Fiber,San Francisco Fish,532,1200,100,25,100,8,8,0
+Dyed Cellulose 4. Yellow Fiber,Dyed Cellulose 4,Cellulose,Yellow,Fiber,San Francisco Fish,532,1200,100,25,100,8,8,30
+Dyed Cellulose 5. Red Fiber,Dyed Cellulose 5,Cellulose,Red,Fiber,San Francisco Fish,785,600,100,100,300,4,8,30
+Cellulose Acetate 1. Clear Film,Cellulose Acetate 1,Cellulose acetate,Clear,Film,Lake Ontario Stormwater,532,1200,100,25,300,4,4,0
+Cellulose Acetate 2. White Fragment,Cellulose Acetate 2,Cellulose acetate,White,Fragment,Chesepeake Bay Stormwater,785,600,100,100,300,8,8,0
+Cellulose Acetate 3. Pink Fiber,Cellulose Acetate 3,Cellulose acetate,Pink,Fiber,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Rubber 1. White Fragment (Styrene-Isoprene),Rubber 1,Styrene/isoprene,White,Fragment,Chesepeake Bay Agriculture Watershed,532,1200,100,25,300,6,6,0
+Rubber 3. Red Fiber (Styrene-Isoprene),Rubber 3,Styrene/isoprene copolymer,Red,Fiber,San Francisco Fish,785,600,50,100,300,10,10,0
+Rubber 4. Red Fragment (Styrene-Isoprene),Rubber 4,Styrene/isoprene copolymer,Red,Fragment,San Francisco Fish,785,600,50,100,300,10,10,0
+Rubber 5. Green Film (Tall Oil Rosin),Rubber 5,Tall Oil Rosin,Green,Film,San Francisco Surface Water,532,1200,100,25,300,5,10,0
+Polycarbonate 1. Pink Fragment,PC 1,PC,Pink,Fragment,Lake Ontario Fish,532,1200,100,100,300,4,4,0
+Polycarbonate 2. Clear Fragment,PC 2,PC,Clear,Fragment,Chesepeake Bay Stormwater,532,1200,100,100,300,4,8,0
+Acrylic 1. Red Fiber (Polyacrylonitrile),Acrylic 1,Polyacrylonitrile,Red,Fiber  ,Calumet Park Sediment,785,600,100,100,300,4,4,0
+Acrylic 2. Pink Fiber Bundle (Polyacrylonitrile),Acrylic 2,Polyacrylonitrile,Pink,Fiber Bundle,San Francisco Stormwater,785,600,100,100,300,4,4,0
+Acrylic 3. Brown Fiber (Polyacrylonitrile),Acrylic 3,Polyacrylonitrile,Brown,Fiber,San Francisco Fish,785,600,100,100,300,10,10,0
+Polyethylene Terephthalate-co-Polycarbonate 1. Red Fragment,PET-co-PC 1,PET:PC copolymer,Red,Fragment,San Francisco Stormwater,785,600,100,100,300,10,10,0
+Polyethylene-co-Polypropylene 1. Grey Fragment,PE-co-PP 1,PE-co-PP,Grey,Fragment,San Francisco Stormwater,532,1200,100,25,300,4,10,0
+Polyethylene-co-Polypropylene 2. Blue Fragment,PE-co-PP 2,PE-co-PP,Blue,Fragment,San Francisco Stormwater,532,1200,100,25,300,4,4,0
+Polyethylene-co-Polypropylene 3. Blue Fragment,PE-co-PP 3,PE-co-PP,Blue,Fragment,San Francisco Stormwater,532,1200,100,25,300,6,6,0
+Polysulfone 1. Blue Fragment,Polysulfone 1,Polysulfone,Blue,Fragment,Lake Ontario Fish,785,600,100,100,300,10,10,0
+Polystyrene-co-Polyvinyl Chloride 1. Clear Film,PS-co-PVC 1,PS-PVC,Clear,Film,Lake Ontario Agriculture Watershed,532,1200,50,50,300,5,10,30
+Polybutylene Terephthalate 1. Pink Fragment,PBT 1,PBT,Pink,Fragment,San Francisco Stormwater,532,1200,100,100,300,4,4,0

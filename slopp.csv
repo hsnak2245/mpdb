@@ -1,0 +1,149 @@
+Library ID,Library ID Shortform,Polymer,Colour,Morphology,Source,Source Type,Laser (nm),Grating ,Hole size (nm),Slit (um),Filter (%),Acq. Time (s),Accumulation,Delay (s)
+Polyethylene 2. Brown Food Container,PE 2,Polyethylene,Light brown,Fragment,Maply syrup bottle,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 3. Turquoise Bin,PE 3,Polyethylene,Turqoise,Fragment,Garbage bin,Donated,532,1200,300,100,25,4,4,30
+Polyethylene 4. Orange Bin,PE 4,Polyethylene,Orange,Fragment,Garbage bin,Donated,532,1200,300,100,10,10,10,30
+Polyethylene 5. Green Microsphere,PE 5,Polyethylene,Green,sphere,Microsphere,Lab,532,1200,300,100,25,8,8,30
+Polyethylene 6.White Microsphere ,PE 6,Polyethylene,White,Sphere,Microsphere,lab ,532,1200,300,100,25,4,4,0
+Polyethylene 7. White Grocery Bag,PE 7,Polyethylene,White,Film,Grocery bag,Store bought,532,1200,300,100,25,4,4,0
+Polyethylene 9. Clear Cling Wrap,PE 9,Polyethylene,Clear,Film,LDPE wrapping,Lab,532,1200,300,100,25,8,8,0
+Polyethylene 10. Grey Grocery Bag,PE 10,Polyethylene,Grey,Film,LDPE bag,Store bought,532,1200,300,100,25,4,4,0
+Polyethylene 11. Green Toy,PE 11,Polyethylene,Green,Fragment,HDPE sled toy,Store bought,532,1200,300,100,25,4,4,0
+Polyethylene 12. Black Pen Lid,PE 12,Polyethylene,Black,Fragment,Pen lid,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 14. Green Wrapper,PE 14,Polyethylene,Green,Film,Tampon wrapper,Donated,532,1200,100,100,25,4,4,0
+Polyethylene 15. Green Tampon Applicator,PE 15,Polyethylene,Green,Fragment,LDPE tampon applicator,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 16. White Art Foam,PE 16,Polyethylene,White,Foam,Art foam,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 19. Grey Cosmetics Bottle,PE 19,Polyethylene,Grey,Fragment,Cosmetic bottle,Donated,532,1200,300,100,25,4,4,30
+Polyethylene 20. White Microsphere,PE 20,Polyethylene,White,Fragment,Microplastic,lab ,532,1200,300,100,25,4,4,0
+Polyethylene 21. Yellow Container Lid,PE 21,Polyethylene,Yellow,Fragment,HDPE food lid,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 22. Blue Container Lid,PE 22,Polyethylene,Blue,Fragment,HDPE food lid,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 23. Clear Cereal Bag,PE 23,Polyethylene,Clear,Film,Cereal bag,Donated,532,1200,300,100,25,4,4,0
+Polyethylene 24. White Microbead,PE 24,Polyethylene,White,Fragment,BB Peach cleanser,Store bought,785,600,300,100,100,4,4,0
+Polyethylene 25. White Microbead,PE 25,Polyethylene,White,Fragment,BOP maple cleanser,Store bought,785,600,500,100,100,8,8,0
+Polyethylene 26. White Microbead,PE 26,Polyethylene,White,Fragment,Neutrogena deep clean cleanser,Store bought,785,600,300,100,100,8,8,0
+Polyethylene 27. Blue Microbead,PE 27,Polyethylene,Blue,Fragment,Neutrogena deep clean cleanser,Store bought,785,600,300,100,100,8,8,0
+Polyethylene 28. Blue Microbead,PE 28,Polyethylene,Blue,Fragment,Daily purifier cleanser,Store bought,532,1200,300,100,25,8,8,0
+Polyethylene 29. Purple Microbead,PE 29,Polyethylene,Purple,Fragment,C&C deep action cleanser,Store bought,785,600,500,100,100,8,8,0
+Polystyrene 1. Brown Coffee Cup Lid,PS 1,Polystyrene,Brown,Fragment,Coffee cup lid,Store bought,532,1200,300,100,25,4,4,0
+Polystyrene 2. White Coffee Cup Lid,PS 2,Polystyrene,White,Fragment,Coffee cup lid,Store bought,532,1200,300,100,25,4,4,0
+Polystyrene 3. White Foam Container,PS 3,Polystyrene,White,Foam,EPS food container,Lab,532,1200,300,100,25,4,4,0
+Polystyrene 4. White Microsphere,PS 4,Polystyrene,Clear,Sphere,Microspheres,Lab,532,1200,300,100,25,4,4,0
+Polystyrene 5. Orange Microsphere,PS 5,Polystyrene,Orange,Sphere,Microspheres,Lab,785,600,300,100,100,4,4,0
+Polystyrene 6. Clear Glassware,PS 6,Polystyrene,Clear,Fragment,Shot glasses,Store bought,532,1200,300,100,25,4,4,0
+Polystyrene 8. Clear Pen Barrel,PS 8,Polystyrene,Clear,Fragment,Ball point pen barrel,Lab,532,1200,300,100,25,4,4,0
+Polystyrene 11. Orange Printer Cartridge,PS 11,Polystyrene,Orange,Fragment,Printer cartridge,Donated,785,600,300,100,100,4,4,0
+Polystyrene 13. Pink Spoon,PS 13,Polystyrene,Pink,Fragment,Ice cream spoon,Donated,785,600,300,100,100,8,8,30
+Polystyrene 14. Clear Refrigerator Drawer,PS 14,Polystyrene,Clear,Fragment,Fridge drawer,Donated,532,1200,300,100,25,4,4,0
+Polystyrene 15. Purple LEGO,PS 15,Polystyrene ,Purple,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Polypropylene 1. Red Straw,PP 1,Polypropylene,Red,Fragment,Straw,Store bought,785,600,300,100,100,4,4,30
+Polypropylene 2. White Straw,PP 2,Polypropylene,White,Fragment,Straw,Store bought,532,1200,300,100,25,4,4,0
+Polypropylene 4. Clear Container Lid,PP 4,Polypropylene,Clear,Fragment,Food Lid,Store bought,532,1200,300,100,25,4,4,0
+Polypropylene 5. White Food Wrapper,PP 5,Polypropylene,White,Film,Bounty Wrapper,Store bought,532,1200,300,100,25,4,4,0
+Polypropylene 7. White Toothbrush Handle,PP 7,Polypropylene,White,Fragment,Bottle Cap,Donated,532,1200,300,100,100,4,4,0
+Polypropylene 8. White Bottle Cap,PP 8,Polypropylene,White,Fragment,Tootbrush Handle,Store bought,532,1200,300,100,100,4,4,0
+Polypropylene 9. White Fork,PP 9,Polypropylene,White,Fragment,Fork,Store bought,532,1200,300,100,100,4,4,0
+Polypropylene 10. Black Battery Holder,PP 10,Polypropylene,Black,Fragment,Battery Holder,Store bought,532,1200,300,100,50,8,8,0
+Polypropylene 12. Yellow Food Wrapper,PP 12,Polypropylene,Yellow,Film,Food Wrapper,Donated,785,600,300,100,100,4,4,0
+Polypropylene 13. Red Bottle Cap,PP 13,Polypropylene,Red,Fragment,Bottle Cap,Donated,785,600,300,100,100,4,4,0
+Polypropylene 14. Blue Bottle Cap,PP 14,Polypropylene,Blue,Fragment,Bottle Cap,Donated,532,1200,300,100,100,4,4,0
+Polypropylene 15. Clear Cling Wrap,PP 15,Polypropylene,Clear,Film,Paper wrapping,Lab,532,1200,300,100,25,4,4,0
+Polypropylene 17. White Rope,PP 17,Polypropylene,White,Fiber,Rope,Store bought,785,600,300,100,100,8,8,0
+Polypropylene 19. Grey Fiber,PP 19,Polypropylene,Grey,Fiber,Fibers,Lab,785,600,100,100,100,8,8,0
+Polypropylene 21. White Ribbon,PP 21,Polypropylene,White,Fiber,Ribbon,Store bought,785,600,100,100,100,8,8,0
+Polypropylene 23. Purple Container Lid,PP 23,Polypropylene,Purple,Fragment,Food pot lid,Donated,785,600,300,100,100,4,4,0
+Polypropylene 24. White Water Filter Deposit,PP 24,Polypropylene,White,Fragment,Water filter residue,Donated,785,600,100,100,100,8,8,0
+Polyethylene Terephthalate 1. Red Bottle,PET 1,Polyethylene Terephthalate,Red,Fragment,Reusable bottle,Lab,785,600,300,100,100,4,4,30
+Polyethylene Terephthalate 2. Black Bottle,PET 2,Polyethylene Terephthalate,Black/Grey,Fragment,Reusable bottle,Lab,785,600,300,100,100,4,4,0
+Polyethylene Terephthalate 8. Clear Juice Bottle,PET 8,Polyethylene Terephthalate,Clear,Fragment,Juice bottle,Donated,532,1200,300,100,25,4,4,0
+Polyethylene Terephthalate 9. White Shampoo Bottle,PET 9,Polyethylene Terephthalate,White,Fragment,Shampoo bottle,Donated,532,1200,300,100,25,4,4,0
+Polyethylene Terephthalate 10. Blue Pharmaceuticals Bottle,PET 10,Polyethylene Terephthalate,Blue,Fragment,Pharmaceuticals bottle,Donated,785,600,300,100,100,4,4,0
+Polyethylene Terephthalate 11. White Wet Wipes Packet,PET 11,Polyethylene Terephthalate,White,Film,Wet wipes packet,Lab,532,1200,300,100,25,4,4,0
+Polyethylene Terephthalate 13. Clear Plastic Sheet,PET 13,Polyethylene Terephthalate,Clear,Fragment,Plastic paper sheet,Lab,532,1200,300,100,25,4,4,0
+Polyethylene Terephthalate 14. White Microsphere,PET 14,Polyethylene Terephthalate,White,Sphere,Microplastic,Lab,785,600,300,100,100,8,8,0
+Polyethylene Terephthalate 16. White Pellet,PET 16,Polyethylene Terephthalate,White,Fragment,Pellet,Lab,532,1200,300,100,25,4,4,0
+Polyvinyl Chloride 2. Yellow Raincoat,PVC 2,Polyvinylchloride,Yellow,Fragment,Raincoat,Store bought,532,1200,300,100,25,4,4,0
+Polyvinyl Chloride 5. Clear Cling Wrap,PVC 5,Polyvinylchloride,Clear,Film,Cling film,Donated,532,1200,300,100,25,4,4,0
+Polyvinyl Chloride 6. Red Cable Cover,PVC 6,Polyvinylchloride,Red,Fragment,Cable cover,Store bought,785,600,300,100,100,8,8,0
+Polyvinyl Chloride 8a. White Cable Cover,PVC  8a,Polyvinylchloride,White,Fragment,Cable cover,Store bought,532,1200,300,100,25,8,8,0
+Polyvinyl Chloride 10. White Microsphere,PVC 10,Polyvinylchloride,Clear,Sphere,Microplastic,Lab,532,1200,300,100,25,4,4,0
+Polyvinyl Chloride 13. Grey Cable Cover,PVC 13,Polyvinylchloride,Grey/Beige,Fragment,Cable,Donated,532,1200,300,100,25,4,4,0
+Polyvinyl Chloride 18. Red Wire Cover,PVC 18,Polyvinylchloride,Red,Fragment,Wire cover,Donated,785,600,300,100,100,4,4,0
+Polyvinyl Chloride 20. Purple Wire Cover,PVC 20,Polyvinylchloride,Purple,Fragment,Wire cover,Donated,785,600,300,100,100,8,8,0
+Polyvinyl Chloride 21. Green Slinky Toy,PVC 21,Polyvinylchloride,Green/Grey,Fragment,Slinky,Donated,785,600,300,100,100,8,8,0
+Polyvinyl Chloride 22. Blue Slinky Toy,PVC 22,Polyvinylchloride,Blue,Fragment,Slinky,Donated,785,600,300,100,100,8,8,0
+Polyvinyl Chloride 26. White Railcard,PVC 26,Polyvinylchloride,White,Fragment,Raillcard,Donated,785,600,500,100,100,4,4,0
+Polyurethane 6. Black Phone Case,PU 6,Polyurethane,Black,Fragment,Phone case,Donated,532,1200,300,100,25,8,8,0
+Polyurethane 7. Yellow Foam Packaging,PU 7,Polyurethane,Yellow,Foam,Foam packaging,Donated,532,1200,100,50,25,4,4,0
+Polyurethane 11. Grey Zip Hold,PU 11,Polyurethane,Grey,Fragment,Zip hold,Donated,532,1200,300,100,25,4,4,0
+Polyurethane 12. Clear Hair Tie,PU 12,Polyurethane,Clear,Fragment,Hair tie,Donated,532,1200,300,100,25,4,4,0
+Polyurethane 17. Clear Thermo-Polyurethane Square,PU 17,Polyurethane,Clear,Fragment,TPU Square,Donated,532,1200,500,100,25,8,8,0
+Polyurethane 18. White Elastic Fiber,PU 18,Polyurethane,White,Fiber,Elastic thread,Store bought,532,1200,300,100,25,4,4,0
+Polycarbonate 1. Clear CD,PC 1,Polycarbonate,Clear,Fragment,CD,Donated,532,1200,300,100,25,4,4,0
+Polycarbonate 2. Clear Swimming Goggles,PC 2,Polycarbonate,Clear,Fragment,Swimming goggles,Donated,532,1200,300,100,25,4,4,0
+Polycarbonate 3. Clear Lab Filter,PC 3,Polycarbonate,Clear,Film,Lab filter,lab,532,1200,300,100,25,4,4,0
+Polycarbonate 5. Clear Lab Goggles,PC 5,Polycarbonate,Clear,Fragment,Lab goggles,lab,532,1200,300,100,25,4,4,0
+Polycarbonate 6. Blue Glassware,PC 6,Polycarbonate,Blue,Fragment,Glassware,lab,532,1200,300,100,25,4,4,0
+Polycarbonate 8. Red Pan Scraper,PC 8,Polycarbonate,Red,Fragment,Pan scraper,lab,785,600,300,100,100,4,4,0
+Polycarbonate 10. Clear LEGO,PC 10,Polycarbonate,Clear,Fragment,LEGO,Donated,532,1200,300,100,25,4,4,0
+Polyethylene Vinyl Acetate 1. Pink Flip Flop,PEVA 1,Polyethylene-vinyl acetate,Pink,Foam,Flip-flop base,Donated,532,1200,100,100,25,6,6,0
+Polyethylene Vinyl Acetate 2. Orange Flip Flop,PEVA 2,Polyethylene-vinyl acetate,Orange,Foam,Flip-flop base,Donated,532,1200,100,100,25,8,8,0
+Polyethylene Vinyl Acetate 7. Yellow Flip Flop,PEVA 7,Polyethylene-vinyl acetate,Yellow,Foam,Flip-flop base,Donated,532,1200,300,50,100,6,6,30
+Polyethylene Vinyl Acetate 8. Green Flip Flop,PEVA 8,Polyethylene-vinyl acetate,Green,Foam,Flip-flop base,Donated,532,1200,300,100,25,10,10,30
+Polyethylene Vinyl Acetate 9. Pink Flip Flop,PEVA 9,Polyethylene-vinyl acetate,Dark Pink,Foam,Flip-flop base,Donated,532,1200,300,100,25,6,6,30
+Polymethyl Methacrylate 2. Clear Glasses Lens,PMMA 2,Polymethyl methacrylate,Clear,Fragment,Glasses lense,Store bought,785,600,500,100,100,4,4,0
+Acrylonitrile Butadiene Styrene 1. Orange LEGO,ABS 1,Acrylonitrile butadiene styrene ,Orange,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 2. Red LEGO,ABS 2,Acrylonitrile butadiene styrene ,Red,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 4. Light Blue LEGO,ABS 4,Acrylonitrile butadiene styrene ,Light Blue,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 5. Dark Blue LEGO,ABS 5,Acrylonitrile butadiene styrene ,Dark Blue,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 6. Dark Green LEGO,ABS 6,Acrylonitrile butadiene styrene ,Dark green,Fragment,LEGO,Donated,532,1200,300,100,25,4,4,30
+Acrylonitrile Butadiene Styrene 7. Light Green LEGO,ABS 7,Acrylonitrile butadiene styrene ,Light Green,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 8. Yellow LEGO,ABS 8,Acrylonitrile butadiene styrene ,Yellow,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 9. Brown LEGO,ABS 9,Acrylonitrile butadiene styrene ,Beige,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 10. Brown LEGO,ABS 10,Acrylonitrile butadiene styrene ,Brown,Fragment,LEGO,Donated,785,600,300,100,100,8,8,0
+Acrylonitrile Butadiene Styrene 14. White Refrigerator Lining,ABS 14,Acrylonitrile butadiene styrene ,White,Fragment,Fridge lining,Lab,532,1200,300,100,50,4,4,0
+Cellulose Acetate 1. Red Microsphere,CA 1,Cellulose Acetate,White,Sphere,Microplastic,Lab,785,600,300,100,100,8,8,0
+Cellulose Acetate 3. White Cigarette Filter,CA 3,Cellulose Acetate,White,Fiber,Cigarette filter,Donated,785,600,300,100,100,8,8,0
+Cellulose Acetate 4. White Fiber,CA 4,Cellulose Acetate,White,Fiber,Fibers,Lab,785,600,100,50,100,8,8,0
+Cellulose Acetate 5. Brown Photography Film,CA 5,Cellulose Acetate,Brown,Film,Photography film,Donated,785,600,300,100,100,8,8,0
+Polyester 1. White Fiber,Polyester 1,Polyester,White,Fiber,Fibers,Donated,785,600,300,100,100,8,8,0
+Polyester 2. Yellow Fiber,Polyester 2,Polyester,Yellow,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyester 3. Orange Fiber,Polyester 3,Polyester,Orange,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyester 4. White Fiber,Polyester 4,Polyester,White,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyester 5. Pink Fiber,Polyester 5,Polyester,Pink/Orange,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyester 6. White Fiber,Polyester 6,Polyester,White,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyester 7. Red Fiber,Polyester 7,Polyester,Red,Fiber,Yarn,Donated,785,600,300,100,100,8,8,0
+Polyester 8. Brown Fiber,Polyester 8,Polyester,Brown,Fiber,Yarn,Donated,785,600,300,100,100,8,8,0
+Polyester 9. Brown Fiber,Polyester 9,Polyester,Dark Brown,Fiber,Yarn,Donated,785,600,300,100,100,8,8,0
+Polyester 10. Dark Blue Fiber,Polyester 10,Polyester,Dark Blue,Fiber,Yarn,Donated,785,600,300,100,100,8,8,0
+Polyamide 1. White Cable Tie,PA 1,Polyamide,White,Fragment,Cable tie,Store bought,532,1200,300,100,25,4,4,0
+Polyamide 2. White Pellet,PA 2,Polyamide,White,Fragment,Pellet,Lab,532,1200,300,100,25,4,4,0
+Polyamide 3. White Fiber,PA 3,Polyamide,White,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyamide 4. White Fiber,PA 4,Polyamide,White,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Polyamide 5. White Tooth Floss,PA 5,Polyamide,White,Fiber,Tooth floss,Store bought,785,600,300,100,100,8,8,0
+Polyamide 6. Red Fiber,PA 6,Polyamide,Red,Fiber,Fiber,Donated,785,600,300,100,100,8,8,0
+Polyamide 10. Yellow Fiber,PA 10,Polyamide,Yellow,Fiber,Fiber,Donated,785,600,300,100,100,8,8,0
+Acrylic 1. Green Yarn,Acrylic 1,Polyacrylonitrile,Green,Fiber,Yarn,Store bought,785,600,300,100,100,10,10,0
+Acrylic 2. Red Yarn,Acrylic 2,Polyacrylonitrile,Red,Fiber,Yarn,Store bought,785,600,300,100,100,8,8,0
+Acrylic 3. Yellow Yarn,Acrylic 3,Polyacrylonitrile,Yellow,Fiber,Yarn,Store bought,785,600,300,100,100,8,8,0
+Acrylic 4. Purple Yarn,Acrylic 4,Polyacrylonitrile,Purple,Fiber,Yarn,Store bought,785,600,300,100,100,8,8,0
+Acrylic 5. Pink Yarn,Acrylic 5,Polyacrylonitrile,Pink,Fiber,Fabric,Donated,785,600,300,100,100,10,10,0
+Acrylic 6. Orange Yarn,Acrylic 6,Polyacrylonitrile,Orange,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Acrylic 7. White Yarn,Acrylic 7,Polyacrylonitrile,White,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Acrylic 8. Orange Fiber,Acrylic 8,Polyacrylonitrile,Orange,Fiber,Hat,Donated,532,1200,300,100,25,8,8,0
+Acrylic 9. Yellow Fiber,Acrylic 9,Polyacrylonitrile,Yellow,Fiber,Sweater,Donated,785,600,300,100,100,10,10,0
+Acrylic 10. Pink Fiber,Acrylic 10,Polyacrylonitrile,Pink,Fiber,Sweater,Donated,785,600,300,100,100,10,10,0
+Cotton 1. Grey Fiber,Cotton 1,Cotton,Grey,Fiber,Fibers,Donated,785,600,300,100,100,4,4,0
+Cotton 2. Pink Fiber,Cotton 2,Cotton,Pink,Fiber,Fibers,Donated,785,600,300,100,100,4,4,0
+Cotton 3. Yellow Fiber,Cotton 3,Cotton,Yellow,Fiber,Fibers,Donated,785,600,300,100,100,4,4,0
+Cotton 7. Orange Fiber,Cotton 7,Cotton,Orange,Fiber,Fabric,Donated,785,600,300,100,100,4,4,0
+Cotton 8. Red Fiber,Cotton 8,Cotton,Red,Fiber,Fabric,Donated,785,600,300,100,100,4,4,0
+Cotton 9. Black Fiber,Cotton 9,Cotton,Black,Fiber,Fabric,Donated,785,600,300,100,100,4,4,0
+Cotton 10. Purple Fiber,Cotton 10,Cotton,Purple,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Cotton 11. Brown Fiber,Cotton 11,Cotton,Brown,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Cotton 14. Yellow Fiber,Cotton 14,Cotton,Yellow,Fiber,Fabric,Donated,785,600,300,100,100,8,8,0
+Cotton 16. White Lab Coat,Cotton 16,Cotton,White,Fiber,Lab coat,Donated,785,600,300,100,100,10,10,0
+Cotton 17. White Tea Bag,Cotton 17,Cotton,White,Fiber,Tea bag,Store bought,785,600,100,100,100,8,8,0
+Cotton 2a. Pink Fiber,Cotton 2a,Cotton,Pink,Fiber,Fiber,Donated,532,1200,100,100,25,8,8,30
+Cotton 3a. Yellow Fiber,Cotton 3a,Cotton,Yellow,Fiber,Fiber,Donated,532,1200,300,100,25,8,8,30
+Cotton 11a. Brown Fiber,Cotton 11a,Cotton,Brown,Fiber,Fiber,Donated,532,1200,100,100,25,8,8,0
+Cotton 12a. Grey Fiber,Cotton 12a,Cotton,Grey,Fiber,Fiber,Donated,532,1200,100,100,25,10,10,0
+Cotton 16a. White Lab Coat,Cotton 16a,Cotton,White,Fiber,White lab coat,Donated,532,1200,100,100,25,8,8,0
