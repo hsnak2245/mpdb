@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-import plotly.graph_objects as go
 
 # Initialize session state
 if 'current_page' not in st.session_state:
