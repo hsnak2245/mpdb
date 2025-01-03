@@ -1,13 +1,26 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+from datetime import datetime
+import plotly.graph_objects as go
 
-# Define dataset information with links and descriptions
+# Initialize session state
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = 'home'
+if 'selected_columns' not in st.session_state:
+    st.session_state.selected_columns = None
+if 'show_column_selector' not in st.session_state:
+    st.session_state.show_column_selector = False
+if 'current_dataset' not in st.session_state:
+    st.session_state.current_dataset = None
+
+# Dataset information
 datasets = {
     "MP_SED - A Microplastic Database for Sediments": {
         "file": "MP_SED_A_Microplastic_Database_for_SEDiments.csv",
         "description": (
             "A comprehensive database containing microplastic concentrations, sizes, shapes, and polymer data for sediments worldwide. "
-            "Compiled from peer-reviewed literature, it serves as a valuable resource for understanding microplastic distribution in sediments. "
+            "Compiled from peer-reviewed literature, it serves as a valuable resource for understanding microplastic distribution in sediments."
         ),
         "url": "https://doer.el.erdc.dren.mil/microplasticdatabase.html"
     },
@@ -23,7 +36,7 @@ datasets = {
         "file": "slopp.csv",
         "description": (
             "The SLOPP (Spectral Library of Plastic Particles) is a collection of Raman spectra representing various microplastics found in environmental samples. "
-            "It aids in the identification and analysis of microplastic particles using Raman spectroscopy. "
+            "It aids in the identification and analysis of microplastic particles using Raman spectroscopy."
         ),
         "url": "https://rochmanlab.wordpress.com/spectral-libraries-for-microplastics-research/"
     },
@@ -31,9 +44,48 @@ datasets = {
         "file": "sloppe.csv",
         "description": (
             "The SLOPPE (Spectral Library of Plastic Particles - Environmental) is an extension of SLOPP, including spectra from microplastics aged in environmental conditions. "
-            "It enhances the accuracy of spectral matching for a broader range of microplastics. "
+            "It enhances the accuracy of spectral matching for a broader range of microplastics."
         ),
         "url": "https://rochmanlab.wordpress.com/spectral-libraries-for-microplastics-research/"
+    }
+}
+
+# External databases information
+external_databases = {
+    "FLOPP and FLOPP-E: ATR-FTIR Spectral Libraries": {
+        "description": (
+            "Comprehensive spectral libraries for microplastics analysis using ATR-FTIR. FLOPP contains 186 spectra and FLOPP-E contains 195 spectra "
+            "from environmentally aged samples, providing valuable reference data for plastic particle identification."
+        ),
+        "url": "https://rochmanlab.wordpress.com/spectral-libraries-for-microplastics-research/"
+    },
+    "LITTERBASE": {
+        "description": (
+            "A GIS-based platform providing global data on marine litter distribution, including detailed information for Qatar. "
+            "Offers comprehensive visualization of marine litter distribution and composition."
+        ),
+        "url": "https://litterbase.awi.de/litter"
+    },
+    "Adventure Scientists Freshwater Microplastics": {
+        "description": (
+            "A citizen science initiative collecting data on microplastic pollution in freshwater systems worldwide. "
+            "Provides detailed information sheets and datasets from various sampling locations."
+        ),
+        "url": "https://www.adventurescientists.org/access-datasets.html"
+    },
+    "SCCWRP Microplastic Dataset": {
+        "description": (
+            "Southern California Coastal Water Research Project's comprehensive dataset on microplastic pollution, "
+            "focusing on coastal waters and providing detailed analytical methods and results."
+        ),
+        "url": "https://microplastics.sccwrp.org/"
+    },
+    "One Earth One Ocean Microplastic Pollution Map": {
+        "description": (
+            "An interactive global mapping platform showing microplastic pollution distribution and concentration levels "
+            "across different marine environments worldwide."
+        ),
+        "url": "https://grad.oeoo.world/"
     }
 }
 
@@ -44,80 +96,291 @@ def load_data(file):
     except UnicodeDecodeError:
         return pd.read_csv(file, encoding="latin1")
 
-# Set Streamlit configuration
+# Set page config
 st.set_page_config(
-    page_title="Micro Plastic Databases",
+    page_title="Micro Plastic Database Viewer",
     page_icon="📊",
     layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# Apply custom styles
-st.markdown(
-    """
+# Custom CSS with dark theme
+st.markdown("""
     <style>
-    body {
-        font-family: 'Space Mono', monospace;
-        background-color: #ffffff;
-        color: #000000;
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
     }
-    .css-1aumxhk {
-        font-family: 'Space Mono', monospace;
+    
+    .stApp {
+        background-color: #000000;
+    }
+    
+    .main {
+        background-color: #000000;
+    }
+    
+    .metric-container {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        border-radius: 4px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    
+    .metric-label {
+        font-size: 0.9rem;
+        color: #b3b3b3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .dataset-card {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        border-radius: 4px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .dataset-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ffffff;
+    }
+    
+    .stButton>button {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        border: 1px solid #404040;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+    
+    .stButton>button:hover {
+        background-color: #404040;
+        border-color: #4d4d4d;
+    }
+    
+    .stSelectbox > div > div {
+        font-family: inherit;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    
+    .stMarkdown a {
+        color: #00b4d8;
+        text-decoration: none;
+    }
+    
+    .stMarkdown a:hover {
+        color: #48cae4;
+        text-decoration: underline;
+    }
+    
+    .stSidebar {
+        background-color: #1a1a1a;
+    }
+    
+    .stSidebar .stMarkdown {
+        font-family: inherit;
+        color: #ffffff;
+    }
+    
+    p {
+        color: #e6e6e6;
+        line-height: 1.6;
+    }
+
+    /* Data table styling */
+    .dataframe {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+    }
+
+    .dataframe th {
+        background-color: #2d2d2d !important;
+        color: #ffffff !important;
+    }
+
+    .dataframe td {
+        background-color: #1a1a1a !important;
+        color: #e6e6e6 !important;
+    }
+
+    /* Radio button and checkbox styling */
+    .stRadio > label, .stCheckbox > label {
+        color: #ffffff !important;
+    }
+
+    
+
+    /* Text input styling */
+    .stTextInput > div > div > input {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+        border-color: #333333 !important;
+    }
+
+    /* Select box styling */
+    .stSelectbox > div > div {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+        border-color: #333333 !important;
     }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+    """, unsafe_allow_html=True)
 
-# App header
-st.title("Micro Plastic Database Viewer")
-st.markdown("Toggle across datasets to view data. You can navigate through 25 rows per page.")
+# Sidebar navigation
+with st.sidebar:
+    st.title("Navigation")
+    page = st.radio("", ["Home", "Data Explorer", "About"], key="navigation")
+    st.session_state.current_page = page.lower()
 
-# Sidebar for dataset selection
-dataset_choice = st.sidebar.selectbox(
-    "Select a dataset",
-    options=list(datasets.keys()),
-)
 
-# Load selected dataset
-st.header(f"{dataset_choice}")
-st.markdown(datasets[dataset_choice]["description"])
-st.markdown(f"Access the dataset here: [{dataset_choice}]({datasets[dataset_choice]['url']})")
+# Home Page
+if st.session_state.current_page == "home":
+    st.title("Micro Plastic Database Explorer")
+    st.markdown("### A Comprehensive Collection of Microplastic Research Data")
+    
+    # Metrics
+    total_records = sum(len(load_data(d["file"])) for d in datasets.values())
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+            <div class="metric-container">
+                <div class="metric-value">{:,}</div>
+                <div class="metric-label">Total Records</div>
+            </div>
+        """.format(total_records), unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+            <div class="metric-container">
+                <div class="metric-value">{}</div>
+                <div class="metric-label">Available Databases</div>
+            </div>
+        """.format(len(datasets)), unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+            <div class="metric-container">
+                <div class="metric-value">{}</div>
+                <div class="metric-label">Last Updated</div>
+            </div>
+        """.format(datetime.now().strftime("%Y-%m-%d")), unsafe_allow_html=True)
 
-# Display download button for the complete CSV
-with open(datasets[dataset_choice]["file"], "rb") as f:
-    st.download_button(
-        label="Download the complete CSV",
-        data=f,
-        file_name=datasets[dataset_choice]["file"],
-        mime="text/csv"
+    # Available Databases
+    st.markdown("## Integrated Databases")
+    
+    for name, info in datasets.items():
+        st.markdown(f"""
+            <div class="dataset-card">
+                <div class="dataset-title">{name}</div>
+                <p>{info['description']}</p>
+                <a href="{info['url']}" target="_blank">Access Source →</a>
+            </div>
+        """, unsafe_allow_html=True)
+    
+    # External Databases Section
+    st.markdown("## Other Databases")
+    st.markdown("These databases are available through external platforms. Click the links to access their respective portals.")
+    
+    for name, info in external_databases.items():
+        st.markdown(f"""
+            <div class="dataset-card">
+                <div class="dataset-title">{name}</div>
+                <p>{info['description']}</p>
+                <a href="{info['url']}" target="_blank">Access Database →</a>
+            </div>
+        """, unsafe_allow_html=True)
+
+# Data Explorer Page
+elif st.session_state.current_page == "data explorer":
+    st.title("Data Explorer")
+    
+    dataset_choice = st.selectbox(
+        "Select a database",
+        options=list(datasets.keys()),
     )
-
-try:
-    df = load_data(datasets[dataset_choice]["file"])
-
-    # Check if the data has been loaded properly
-    if df.empty:
-        st.error("The dataset is empty.")
-    else:
+    
+    try:
+        df = load_data(datasets[dataset_choice]["file"])
+        
+        # Reset column selector if necessary
+        if 'selected_columns' in st.session_state and st.session_state.selected_columns is None:
+            st.session_state.selected_columns = df.columns.tolist()
+        
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.markdown(f"### {dataset_choice}")
+            st.markdown(datasets[dataset_choice]["description"])
+        with col2:
+            with open(datasets[dataset_choice]["file"], "rb") as f:
+                st.download_button(
+                    label="Download CSV",
+                    data=f,
+                    file_name=datasets[dataset_choice]["file"],
+                    mime="text/csv"
+                )
+        
+        if st.button("Toggle Column Selector"):
+            st.session_state.show_column_selector = not st.session_state.show_column_selector
+            
+        if st.session_state.show_column_selector:
+            selected_cols = st.multiselect(
+                "Select columns to display",
+                options=df.columns.tolist(),
+                default=st.session_state.selected_columns if st.session_state.selected_columns else df.columns.tolist()
+            )
+            st.session_state.selected_columns = selected_cols
+        
+        display_cols = st.session_state.selected_columns if st.session_state.selected_columns else df.columns.tolist()
+        
         # Pagination
-        page_size = 25
-        num_pages = len(df) // page_size + (1 if len(df) % page_size > 0 else 0)
+        rows_per_page = 50
+        total_pages = len(df) // rows_per_page + (1 if len(df) % rows_per_page > 0 else 0)
+        page = st.slider("Page", 1, total_pages, 1)
+        
+        start_idx = (page - 1) * rows_per_page
+        end_idx = min(start_idx + rows_per_page, len(df))
+        
+        st.markdown(f"Showing rows {start_idx + 1} to {end_idx} of {len(df)}")
+        st.dataframe(df.iloc[start_idx:end_idx][display_cols], height=500)
+        
+    except Exception as e:
+        st.error(f"Error loading data: {e}")
 
-        # Display the page navigation
-        page_number = st.sidebar.slider(
-            "Page", 1, num_pages, 1
-        )
 
-        # Calculate the start and end row index for the current page
-        start_idx = (page_number - 1) * page_size
-        end_idx = min(page_number * page_size, len(df))
-
-        # Display the data for the selected page with headers
-        st.subheader(f"Showing Rows {start_idx + 1} to {end_idx} of {len(df)}")
-        st.dataframe(df.iloc[start_idx:end_idx])  # This is where the table is displayed
-
-        # Display the current page number and total pages
-        st.markdown(f"**Page {page_number} of {num_pages}**")
-
-except Exception as e:
-    st.error(f"Error loading data: {e}")
+# About Page
+elif st.session_state.current_page == "about":
+    st.title("About")
+    st.markdown("""
+    ## About the Database Viewer
+    
+    This platform aggregates multiple microplastic databases into a single, accessible interface. It serves as a comprehensive tool for researchers, environmentalists, and anyone interested in microplastic pollution data.
+    
+    ### Data Sources
+    - Environmental Laboratory of the U.S. Army Engineer Research and Development Center
+    - NOAA National Centers for Environmental Information
+    - Rochman Laboratory at the University of Toronto
+    
+    ### Features
+    - Centralized access to multiple databases
+    - Custom column filtering
+    - Paginated data viewing
+    - CSV download capability
+    - Regular data updates
+    """)
