@@ -11,8 +11,6 @@ if 'show_column_selector' not in st.session_state:
     st.session_state.show_column_selector = False
 if 'current_dataset' not in st.session_state:
     st.session_state.current_dataset = None
-if 'theme' not in st.session_state:
-    st.session_state.theme = 'dark'
 
 # Dataset information
 datasets = {
@@ -96,247 +94,6 @@ def load_data(file):
     except UnicodeDecodeError:
         return pd.read_csv(file, encoding="latin1")
 
-
-def get_theme_css(theme):
-    """Return CSS based on selected theme."""
-    if theme == 'light':
-        return """<style>
-    /* Base Theme Colors */
-    .stApp, .main {
-        background-color: #f8fafc; /* Light background */
-        color: #1e293b; /* Dark text */
-    }
-
-    /* Text Styling */
-    .stApp div, .main div, .stMarkdown p {
-        color: #475569; /* Subtle dark text for regular paragraphs */
-        line-height: 1.7; /* Increased line-height for readability */
-    }
-
-    /* Headings Styling */
-    h1, h2, h3, h4, h5, h6, .dataset-title {
-        color: #1e293b; /* Dark color for headings */
-        font-weight: 600; /* Bold headings */
-    }
-
-    /* Markdown Text */
-    .stMarkdown a {
-        color: #0284c7; /* Primary link color */
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-    .stMarkdown a:hover {
-        color: #0369a1; /* Darker color for link hover */
-    }
-
-    /* Sidebar and Button Styling */
-    .stSidebar {
-        background-color: #ffffff; /* Sidebar background */
-        border-right: 1px solid #e2e8f0; /* Subtle border for separation */
-        box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
-    }
-    .stButton > button {
-        background-color: #ffffff;
-        color: #1e293b;
-        border: 1px solid #e2e8f0;
-        padding: 0.625rem 1.25rem;
-        border-radius: 8px;
-        font-weight: 500;
-        transition: all 0.2s ease;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    .stButton > button:hover {
-        background-color: #f1f5f9; /* Lighter background on hover */
-        border-color: #cbd5e1;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-    }
-
-    /* Metric Containers and Dataset Cards */
-    .metric-container, .dataset-card {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 0.75rem 0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .metric-container:hover, .dataset-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    .metric-value {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 0.5rem;
-    }
-    .metric-label {
-        font-size: 0.875rem;
-        color: #64748b;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 500;
-    }
-
-    /* Table Styling */
-    .dataframe {
-        background-color: #ffffff !important;
-        color: #1e293b !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 8px !important;
-        overflow: hidden !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-    }
-    .dataframe th {
-        background-color: #f8fafc !important;
-        color: #1e293b !important;
-        font-weight: 600 !important;
-        border-bottom: 2px solid #e2e8f0 !important;
-        padding: 12px 16px !important;
-    }
-    .dataframe td {
-        background-color: #ffffff !important;
-        color: #475569 !important;
-        border-bottom: 1px solid #e2e8f0 !important;
-        padding: 12px 16px !important;
-    }
-
-    /* Form Elements */
-    .stRadio > label, .stCheckbox > label {
-        color: #1e293b !important;
-        font-weight: 500 !important;
-    }
-    .stTextInput > div > div > input,
-    .stSelectbox > div > div,
-    .stMultiSelect > div > div {
-        background-color: #ffffff !important;
-        color: #1e293b !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 8px !important;
-        padding: 0.5rem 1rem !important;
-    }
-    .stSlider > div > div > div > div,
-    .stSlider > div > div > div > div > div {
-        background-color: #0284c7 !important;
-    }
-
-    /* Typography */
-    p, .stMarkdown p {
-        color: #475569;
-        line-height: 1.7;
-    }
-    h1, h2, h3, h4, h5, h6 {
-        color: #1e293b;
-        font-weight: 600;
-    }
-
-</style>
-
-        """
-    elif theme == 'dark':
-        # [Keep the existing dark theme CSS]
-        return """
-        <style>
-        .stApp {
-            background-color: #000000;
-        }
-        
-        .main {
-            background-color: #000000;
-        }
-        
-        .metric-container {
-            background-color: #1a1a1a;
-            border: 1px solid #333333;
-            border-radius: 4px;
-            padding: 1rem;
-            margin: 0.5rem 0;
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        
-        .metric-label {
-            font-size: 0.9rem;
-            color: #b3b3b3;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .dataset-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333333;
-            border-radius: 4px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .dataset-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            color: #ffffff;
-        }
-        
-        p {
-            color: #e6e6e6;
-        }
-        
-        .dataframe {
-            background-color: #1a1a1a !important;
-            color: #ffffff !important;
-        }
-        
-        .dataframe th {
-            background-color: #2d2d2d !important;
-            color: #ffffff !important;
-        }
-        
-        .dataframe td {
-            background-color: #1a1a1a !important;
-            color: #e6e6e6 !important;
-        }
-        
-        .stSidebar {
-            background-color: #1a1a1a;
-        }
-        
-        .stSidebar .stMarkdown {
-            color: #ffffff;
-        }
-        </style>
-        """
-    else:  # system theme
-        # [Keep the existing system theme CSS]
-        return """
-        <style>
-        @media (prefers-color-scheme: dark) {
-            /* Dark mode styles */
-            .stApp { background-color: #000000; }
-            .main { background-color: #000000; }
-            /* [Include all dark theme styles] */
-        }
-        
-        @media (prefers-color-scheme: light) {
-            /* Light mode styles */
-            .stApp { background-color: #ffffff; }
-            .main { background-color: #ffffff; }
-            /* [Include all light theme styles] */
-        }
-        </style>
-        """
-
 # Set page config
 st.set_page_config(
     page_title="Micro Plastic Database Viewer",
@@ -345,24 +102,148 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Sidebar navigation and theme selector
+# Custom CSS with dark theme
+st.markdown("""
+    <style>
+    * {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    }
+    
+    .stApp {
+        background-color: #000000;
+    }
+    
+    .main {
+        background-color: #000000;
+    }
+    
+    .metric-container {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        border-radius: 4px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    
+    .metric-label {
+        font-size: 0.9rem;
+        color: #b3b3b3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .dataset-card {
+        background-color: #1a1a1a;
+        border: 1px solid #333333;
+        border-radius: 4px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .dataset-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ffffff;
+    }
+    
+    .stButton>button {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        border: 1px solid #404040;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+    
+    .stButton>button:hover {
+        background-color: #404040;
+        border-color: #4d4d4d;
+    }
+    
+    .stSelectbox > div > div {
+        font-family: inherit;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff;
+    }
+    
+    .stMarkdown a {
+        color: #00b4d8;
+        text-decoration: none;
+    }
+    
+    .stMarkdown a:hover {
+        color: #48cae4;
+        text-decoration: underline;
+    }
+    
+    .stSidebar {
+        background-color: #1a1a1a;
+    }
+    
+    .stSidebar .stMarkdown {
+        font-family: inherit;
+        color: #ffffff;
+    }
+    
+    p {
+        color: #e6e6e6;
+        line-height: 1.6;
+    }
+
+    /* Data table styling */
+    .dataframe {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+    }
+
+    .dataframe th {
+        background-color: #2d2d2d !important;
+        color: #ffffff !important;
+    }
+
+    .dataframe td {
+        background-color: #1a1a1a !important;
+        color: #e6e6e6 !important;
+    }
+
+    /* Radio button and checkbox styling */
+    .stRadio > label, .stCheckbox > label {
+        color: #ffffff !important;
+    }
+
+    
+
+    /* Text input styling */
+    .stTextInput > div > div > input {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+        border-color: #333333 !important;
+    }
+
+    /* Select box styling */
+    .stSelectbox > div > div {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+        border-color: #333333 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Sidebar navigation
 with st.sidebar:
     st.title("Navigation")
     page = st.radio("", ["Home", "Data Explorer", "About"], key="navigation")
     st.session_state.current_page = page.lower()
-    
-    # Theme selector
-    st.markdown("### Theme Settings")
-    theme = st.selectbox(
-        "Select Theme",
-        options=['dark', 'light', 'system'],
-        index=['dark', 'light', 'system'].index(st.session_state.theme),
-        key="theme_selector"
-    )
-    st.session_state.theme = theme
-
-# Apply theme CSS
-st.markdown(get_theme_css(st.session_state.theme), unsafe_allow_html=True)
 
 
 # Home Page
