@@ -321,6 +321,13 @@ elif st.session_state.current_page == "data explorer":
     # Update the current dataset in session state
     st.session_state.current_dataset = dataset_choice
     
+    # Reset selected columns if a new dataset is selected
+    if 'current_dataset' in st.session_state and st.session_state.current_dataset != dataset_choice:
+        st.session_state.selected_columns = None  # Reset selected columns when switching datasets
+
+    # Update the current dataset in session state
+    st.session_state.current_dataset = dataset_choice
+    
     try:
         df = load_data(datasets[dataset_choice]["file"])
         
@@ -375,17 +382,10 @@ elif st.session_state.current_page == "about":
     st.markdown("""
     ## About the Database Viewer
     
-    This platform aggregates multiple microplastic databases into a single, accessible interface. It serves as a comprehensive tool for researchers, environmentalists, and anyone interested in microplastic pollution data.
-    
+    This platform aggregates multiple microplastic databases into a single, accessible interface. 
     ### Data Sources
     - Environmental Laboratory of the U.S. Army Engineer Research and Development Center
     - NOAA National Centers for Environmental Information
     - Rochman Laboratory at the University of Toronto
-    
-    ### Features
-    - Centralized access to multiple databases
-    - Custom column filtering
-    - Paginated data viewing
-    - CSV download capability
-    - Regular data updates
     """)
+
