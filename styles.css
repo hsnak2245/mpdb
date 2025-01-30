@@ -1,0 +1,132 @@
+
+* {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+.stApp {
+    background-color: #000000;
+}
+
+.main {
+    background-color: #000000;
+}
+
+.metric-container {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dataset-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dataset-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.stButton>button {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #404040;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.stButton>button:hover {
+    background-color: #404040;
+    border-color: #4d4d4d;
+}
+
+.stSelectbox > div > div {
+    font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+.stMarkdown a {
+    color: #00b4d8;
+    text-decoration: none;
+}
+
+.stMarkdown a:hover {
+    color: #48cae4;
+    text-decoration: underline;
+}
+
+.stSidebar {
+    background-color: #1a1a1a;
+}
+
+.stSidebar .stMarkdown {
+    font-family: inherit;
+    color: #ffffff;
+}
+
+p {
+    color: #e6e6e6;
+    line-height: 1.6;
+}
+
+/* Data table styling */
+.dataframe {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+.dataframe th {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+}
+
+.dataframe td {
+    background-color: #1a1a1a !important;
+    color: #e6e6e6 !important;
+}
+
+/* Radio button and checkbox styling */
+.stRadio > label, .stCheckbox > label {
+    color: #ffffff !important;
+}
+
+
+
+/* Text input styling */
+.stTextInput > div > div > input {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+}
+
+/* Select box styling */
+.stSelectbox > div > div {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+}
