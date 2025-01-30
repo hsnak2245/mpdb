@@ -4,21 +4,32 @@ from datetime import datetime
 import numpy as np
 from scipy.signal import find_peaks
 import plotly.graph_objects as go
+from typing import Dict, Optional
+import logging
+import os
 
-# Initialize session state
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Initialize session state with type hints
 if 'current_page' not in st.session_state:
-    st.session_state.current_page = 'home'
+    st.session_state.current_page: str = 'home'
 if 'selected_columns' not in st.session_state:
-    st.session_state.selected_columns = None
+    st.session_state.selected_columns: Optional[list] = None
 if 'show_column_selector' not in st.session_state:
-    st.session_state.show_column_selector = False
+    st.session_state.show_column_selector: bool = False
 if 'current_dataset' not in st.session_state:
-    st.session_state.current_dataset = None
+    st.session_state.current_dataset: Optional[str] = None
 if 'processed_ftir_files' not in st.session_state:
-    st.session_state.processed_ftir_files = {}
+    st.session_state.processed_ftir_files: Dict = {}
+if 'polymer_list' not in st.session_state:
+    st.session_state.polymer_list: Dict = {}
+if 'selected_polymer' not in st.session_state:
+    st.session_state.selected_polymer: Optional[str] = None
 
-# Dataset information
-datasets = {
+# Dataset information with type hints
+datasets: Dict[str, Dict[str, str]] = {
     "MP_SED - A Microplastic Database for Sediments": {
         "file": "MP_SED_A_Microplastic_Database_for_SEDiments.csv",
         "description": (
@@ -53,8 +64,7 @@ datasets = {
     }
 }
 
-# External databases information
-external_databases = {
+external_databases: Dict[str, Dict[str, str]] = {
     "FLOPP and FLOPP-E: ATR-FTIR Spectral Libraries": {
         "description": (
             "Comprehensive spectral libraries for microplastics analysis using ATR-FTIR. FLOPP contains 186 spectra and FLOPP-E contains 195 spectra "
@@ -92,28 +102,59 @@ external_databases = {
     }
 }
 
-def load_data(file):
-    """Load a CSV file into a Pandas DataFrame."""
-    try:
-        return pd.read_csv(file, encoding="utf-8")
-    except UnicodeDecodeError:
-        return pd.read_csv(file, encoding="latin1")
-
-# Set page config
-st.set_page_config(
-    page_title="Micro Plastic Database Viewer",
-    page_icon="🔬",  # Add an appropriate emoji or use None
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-def load_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+class DataLoader:
+    """Handles data loading operations with error handling."""
+    
+    @staticmethod
+    def load_data(file: str) -> pd.DataFrame:
+        """
+        Load a CSV file into a Pandas DataFrame with proper error handling.
+        
+        Args:
+            file (str): Path to the CSV file
+            
+        Returns:
+            pd.DataFrame: Loaded dataframe
+            
+        Raises:
+            FileNotFoundError: If the file doesn't exist
+            pd.errors.EmptyDataError: If the file is empty
+        """
+        try:
+            if not os.path.exists(file):
+                raise FileNotFoundError(f"File not found: {file}")
+                
+            try:
+                df = pd.read_csv(file, encoding="utf-8")
+            except UnicodeDecodeError:
+                df = pd.read_csv(file, encoding="latin1")
+                
+            if df.empty:
+                raise pd.errors.EmptyDataError(f"Empty CSV file: {file}")
+                
+            return df
+            
+        except Exception as e:
+            logger.error(f"Error loading {file}: {str(e)}")
+            raise
 
 class FTIRProcessor:
+    """Handles FTIR spectrum processing and analysis."""
+    
     @staticmethod
-    def process_ftir_file(file):
+    def process_ftir_file(file) -> pd.DataFrame:
+        """
+        Process FTIR file data.
+        
+        Args:
+            file: File object containing FTIR data
+            
+        Returns:
+            pd.DataFrame: Processed FTIR data
+            
+        Raises:
+            ValueError: If file format is invalid
+        """
         try:
             df = pd.read_csv(file)
             if len(df.columns) != 2:
@@ -122,11 +163,22 @@ class FTIRProcessor:
             df.columns = ['cm-1', 'transmittance']
             df['absorbance'] = np.log10(100/df['transmittance'])
             return df
+            
         except Exception as e:
+            logger.error(f"Error processing FTIR file: {str(e)}")
             raise ValueError(f"Error processing file: {str(e)}")
 
     @staticmethod
-    def find_peaks_in_spectrum(df):
+    def find_peaks_in_spectrum(df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Find significant peaks in FTIR spectrum.
+        
+        Args:
+            df (pd.DataFrame): Processed FTIR data
+            
+        Returns:
+            pd.DataFrame: Peak information
+        """
         peaks, properties = find_peaks(-df['absorbance'],
                                      prominence=0.01,
                                      width=2,
@@ -143,7 +195,20 @@ class FTIRProcessor:
             'Transmittance': peak_heights
         })
 
-def create_plotly_spectrum(df, peaks=None, title="FTIR Spectrum"):
+def create_plotly_spectrum(df: pd.DataFrame, 
+                          peaks: Optional[pd.DataFrame] = None, 
+                          title: str = "FTIR Spectrum") -> go.Figure:
+    """
+    Create a Plotly figure for FTIR spectrum visualization.
+    
+    Args:
+        df (pd.DataFrame): FTIR data
+        peaks (Optional[pd.DataFrame]): Peak data
+        title (str): Plot title
+        
+    Returns:
+        go.Figure: Plotly figure object
+    """
     fig = go.Figure()
     
     # Add main spectrum
@@ -175,56 +240,83 @@ def create_plotly_spectrum(df, peaks=None, title="FTIR Spectrum"):
     
     return fig
 
+def main():
+    """Main application entry point."""
+    
+    # Set page config
+    st.set_page_config(
+        page_title="Micro Plastic Database Viewer",
+        page_icon="🔬",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
 
+    # Load CSS
+    try:
+        with open('styles.css') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        logger.warning("styles.css not found")
 
-load_css('styles.css')
+    # Sidebar navigation
+    with st.sidebar:
+        st.title("Navigation")
+        page = st.radio("", ["Home", "Data Explorer", "Search by Polymer", "FTIR Viewer", "About"])
+        st.session_state.current_page = page.lower()
 
+    # Page routing
+    if st.session_state.current_page == "home":
+        render_home_page()
+    elif st.session_state.current_page == "data explorer":
+        render_data_explorer()
+    elif st.session_state.current_page == "search by polymer":
+        render_polymer_search()
+    elif st.session_state.current_page == "ftir viewer":
+        render_ftir_viewer()
+    elif st.session_state.current_page == "about":
+        render_about_page()
 
-# Sidebar navigation
-with st.sidebar:
-    st.title("Navigation")
-    page = st.radio("", ["Home", "Data Explorer", "Search by Polymer", "FTIR Viewer", "About"], key="navigation")
-    st.session_state.current_page = page.lower()
-
-
-
-# Home Page
-if st.session_state.current_page == "home":
+def render_home_page():
+    """Render the home page."""
     st.title("Micro Plastic Database Explorer")
     st.markdown("### A Comprehensive Collection of Microplastic Research Data")
     
-    # Metrics
-    total_records = sum(len(load_data(d["file"])) for d in datasets.values())
+    # Calculate metrics
+    try:
+        total_records = sum(len(DataLoader.load_data(d["file"])) for d in datasets.values())
+    except Exception as e:
+        logger.error(f"Error calculating total records: {str(e)}")
+        total_records = 0
     
+    # Display metrics
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown("""
+        st.markdown(f"""
             <div class="metric-container">
-                <div class="metric-value">{:,}</div>
+                <div class="metric-value">{total_records:,}</div>
                 <div class="metric-label">Total Records</div>
             </div>
-        """.format(total_records), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with col2:
-        st.markdown("""
+        st.markdown(f"""
             <div class="metric-container">
-                <div class="metric-value">{}</div>
+                <div class="metric-value">{len(datasets)}</div>
                 <div class="metric-label">Available Databases</div>
             </div>
-        """.format(len(datasets)), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
     
     with col3:
-        st.markdown("""
+        st.markdown(f"""
             <div class="metric-container">
-                <div class="metric-value">{}</div>
+                <div class="metric-value">{datetime.now().strftime("%Y-%m-%d")}</div>
                 <div class="metric-label">Last Updated</div>
             </div>
-        """.format(datetime.now().strftime("%Y-%m-%d")), unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
-    # Available Databases
+    # Display database information
     st.markdown("## Integrated Databases")
-    
     for name, info in datasets.items():
         st.markdown(f"""
             <div class="dataset-card">
@@ -234,10 +326,7 @@ if st.session_state.current_page == "home":
             </div>
         """, unsafe_allow_html=True)
     
-    # External Databases Section
     st.markdown("## Other Databases")
-    st.markdown("These databases are available through external platforms. Click the links to access their respective portals.")
-    
     for name, info in external_databases.items():
         st.markdown(f"""
             <div class="dataset-card">
@@ -247,29 +336,28 @@ if st.session_state.current_page == "home":
             </div>
         """, unsafe_allow_html=True)
 
-# Data Explorer Page
-elif st.session_state.current_page == "data explorer":
+def render_data_explorer():
+    """Render the data explorer page."""
     st.title("Data Explorer")
     
     dataset_choice = st.selectbox(
         "Select a database",
-        options=list(datasets.keys()),
+        options=list(datasets.keys())
     )
     
     # Reset selected columns if a new dataset is selected
-    if 'current_dataset' in st.session_state and st.session_state.current_dataset != dataset_choice:
-        st.session_state.selected_columns = None  # Reset selected columns when switching datasets
-
-    # Update the current dataset in session state
-    st.session_state.current_dataset = dataset_choice
+    if st.session_state.current_dataset != dataset_choice:
+        st.session_state.selected_columns = None
+        st.session_state.current_dataset = dataset_choice
     
     try:
-        df = load_data(datasets[dataset_choice]["file"])
+        df = DataLoader.load_data(datasets[dataset_choice]["file"])
         
-        # Reset column selector if necessary
-        if 'selected_columns' in st.session_state and st.session_state.selected_columns is None:
+        # Initialize selected columns if necessary
+        if st.session_state.selected_columns is None:
             st.session_state.selected_columns = df.columns.tolist()
         
+        # Display dataset info and download button
         col1, col2 = st.columns([3, 1])
         with col1:
             st.markdown(f"### {dataset_choice}")
@@ -283,6 +371,7 @@ elif st.session_state.current_page == "data explorer":
                     mime="text/csv"
                 )
         
+        # Column selector
         if st.button("Toggle Column Selector"):
             st.session_state.show_column_selector = not st.session_state.show_column_selector
             
@@ -290,7 +379,7 @@ elif st.session_state.current_page == "data explorer":
             selected_cols = st.multiselect(
                 "Select columns to display",
                 options=df.columns.tolist(),
-                default=st.session_state.selected_columns if st.session_state.selected_columns else df.columns.tolist()
+                default=st.session_state.selected_columns
             )
             st.session_state.selected_columns = selected_cols
         
@@ -308,21 +397,13 @@ elif st.session_state.current_page == "data explorer":
         st.dataframe(df.iloc[start_idx:end_idx][display_cols], height=500)
         
     except Exception as e:
-        st.error(f"Error loading data: {e}")
+        logger.error(f"Error in data explorer: {str(e)}")
+        st.error(f"Error loading data: {str(e)}")
 
-
-elif st.session_state.current_page == "search by polymer":  # Changed to lowercase to match navigation
+def render_polymer_search():
+    """Render the polymer search page."""
     st.title("Polymer Search and Analysis")
     
-    # Initialize session state
-    if 'polymer_list' not in st.session_state:
-        st.session_state.polymer_list = {}
-    if 'selected_polymer' not in st.session_state:
-        st.session_state.selected_polymer = None
-    if 'current_dataset' not in st.session_state:
-        st.session_state.current_dataset = None
-
-    # Dataset selection
     dataset_choice = st.selectbox(
         "Select a database",
         options=list(datasets.keys()),
@@ -330,20 +411,15 @@ elif st.session_state.current_page == "search by polymer":  # Changed to lowerca
     )
 
     try:
-        # Load the selected dataset
-        df = load_data(datasets[dataset_choice]["file"])
+        df = DataLoader.load_data(datasets[dataset_choice]["file"])
         
-        # Determine the polymer column based on the dataset
+        # Determine polymer column
         polymer_column = 'Polymers' if 'Polymers' in df.columns else 'Polymer'
         
         if polymer_column in df.columns:
             # Extract unique polymers and their counts
             polymers_series = df[polymer_column].dropna().str.split(',').explode().str.strip()
             polymer_counts = polymers_series.value_counts()
-            
-            # Display polymer distribution
-            # st.subheader("Polymer Distribution")
-            # st.dataframe(polymer_counts, height=200)
             
             # Polymer selection
             selected_polymer = st.selectbox(
@@ -357,14 +433,14 @@ elif st.session_state.current_page == "search by polymer":  # Changed to lowerca
                 filtered_data = df[df[polymer_column].str.contains(selected_polymer, na=False)]
                 
                 # Display statistics
-                st.markdown(f"Total occurrences: **{polymer_counts[selected_polymer]}** (**{(polymer_counts[selected_polymer] / polymer_counts.sum() * 100):.2f}%**)")
-                
+                st.markdown(f"Total occurrences: **{polymer_counts[selected_polymer]}** "
+                          f"(**{(polymer_counts[selected_polymer] / polymer_counts.sum() * 100):.2f}%**)")
                 
                 # Display filtered data
                 st.subheader("Filtered Data")
                 st.dataframe(filtered_data, height=400)
                 
-                # Add download button for filtered data
+                # Download button for filtered data
                 csv = filtered_data.to_csv(index=False)
                 st.download_button(
                     label="Download Filtered Data",
@@ -376,16 +452,18 @@ elif st.session_state.current_page == "search by polymer":  # Changed to lowerca
             st.error(f"No polymer column found in the selected dataset. Expected column name: {polymer_column}")
             
     except Exception as e:
-        st.error(f"Error processing data: {e}")
-# New FTIR Viewer Page
-elif st.session_state.current_page == "ftir viewer":
+        logger.error(f"Error in polymer search: {str(e)}")
+        st.error(f"Error processing data: {str(e)}")
+
+def render_ftir_viewer():
+    """Render the FTIR viewer page."""
     st.title("FTIR Spectrum Viewer")
     st.markdown("""
     Upload FTIR spectrum data to visualize and analyze peaks. 
     Each CSV file should contain two columns: wavenumber and transmittance.
     """)
     
-    # File upload section
+    # File upload
     uploaded_files = st.file_uploader(
         "Upload FTIR CSV files",
         type="csv",
@@ -394,8 +472,9 @@ elif st.session_state.current_page == "ftir viewer":
     )
     
     if uploaded_files:
-        # Process uploaded files
         processor = FTIRProcessor()
+        
+        # Process uploaded files
         for file in uploaded_files:
             try:
                 if file.name not in st.session_state.processed_ftir_files:
@@ -406,9 +485,10 @@ elif st.session_state.current_page == "ftir viewer":
                         'peaks': peaks
                     }
             except Exception as e:
+                logger.error(f"Error processing FTIR file {file.name}: {str(e)}")
                 st.error(f"Error processing {file.name}: {str(e)}")
         
-        # Visualization section
+        # Visualization
         if st.session_state.processed_ftir_files:
             view_mode = st.radio(
                 "Select View Mode",
@@ -431,7 +511,7 @@ elif st.session_state.current_page == "ftir viewer":
                     )
                     st.plotly_chart(spectrum_fig, use_container_width=True)
                     
-                    # Display peak data
+                    # Peak analysis
                     st.markdown("### Peak Analysis")
                     st.dataframe(file_data['peaks'])
             
@@ -453,16 +533,37 @@ elif st.session_state.current_page == "ftir viewer":
                 
                 st.plotly_chart(combined_fig, use_container_width=True)
 
-# About Page
-elif st.session_state.current_page == "about":
+def render_about_page():
+    """Render the about page."""
     st.title("About")
     st.markdown("""
     ## About the Database Viewer
     
     This platform aggregates multiple microplastic databases into a single, accessible interface. 
+    It provides tools for exploring and analyzing microplastic data from various sources.
+    
     ### Data Sources
     - Environmental Laboratory of the U.S. Army Engineer Research and Development Center
     - NOAA National Centers for Environmental Information
     - Rochman Laboratory at the University of Toronto
-    """)
     
+    ### Features
+    - Interactive data exploration
+    - Polymer-specific analysis
+    - FTIR spectrum visualization
+    - Data export capabilities
+    
+    ### Technical Details
+    Built with:
+    - Streamlit
+    - Pandas
+    - Plotly
+    - NumPy
+    - SciPy
+    
+    For more information about the data sources or to report issues, please visit the respective database websites 
+    listed on the home page.
+    """)
+
+if __name__ == "__main__":
+    main()
