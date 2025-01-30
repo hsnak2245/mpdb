@@ -179,13 +179,6 @@ def create_plotly_spectrum(df, peaks=None, title="FTIR Spectrum"):
 
 load_css('styles.css')
 
-# Set page config
-st.set_page_config(
-    page_title="Micro Plastic Database Viewer",
-    page_icon="",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 # Sidebar navigation
 with st.sidebar:
