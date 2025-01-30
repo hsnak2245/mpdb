@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import numpy as np
+from scipy.signal import find_peaks
+import plotly.graph_objects as go
 
 # Initialize session state
 if 'current_page' not in st.session_state:
@@ -11,8 +14,8 @@ if 'show_column_selector' not in st.session_state:
     st.session_state.show_column_selector = False
 if 'current_dataset' not in st.session_state:
     st.session_state.current_dataset = None
-
-
+if 'processed_ftir_files' not in st.session_state:
+    st.session_state.processed_ftir_files = {}
 
 # Dataset information
 datasets = {
@@ -108,15 +111,88 @@ def load_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Remove the existing st.markdown() call with the CSS content
-# And replace it with:
+class FTIRProcessor:
+    @staticmethod
+    def process_ftir_file(file):
+        try:
+            df = pd.read_csv(file)
+            if len(df.columns) != 2:
+                raise ValueError("CSV must have exactly 2 columns: wavenumber and transmittance")
+            
+            df.columns = ['cm-1', 'transmittance']
+            df['absorbance'] = np.log10(100/df['transmittance'])
+            return df
+        except Exception as e:
+            raise ValueError(f"Error processing file: {str(e)}")
+
+    @staticmethod
+    def find_peaks_in_spectrum(df):
+        peaks, properties = find_peaks(-df['absorbance'],
+                                     prominence=0.01,
+                                     width=2,
+                                     distance=20)
+        
+        sorted_indices = np.argsort(properties['prominences'])[::-1]
+        significant_peaks = df['cm-1'].iloc[peaks].values[sorted_indices][:10]
+        prominence_values = properties['prominences'][sorted_indices][:10]
+        peak_heights = df['transmittance'].iloc[peaks].values[sorted_indices][:10]
+        
+        return pd.DataFrame({
+            'Wavenumber': significant_peaks,
+            'Prominence': prominence_values,
+            'Transmittance': peak_heights
+        })
+
+def create_plotly_spectrum(df, peaks=None, title="FTIR Spectrum"):
+    fig = go.Figure()
+    
+    # Add main spectrum
+    fig.add_trace(go.Scatter(
+        x=df['cm-1'],
+        y=df['transmittance'],
+        name='Spectrum',
+        line=dict(color='#2c7bb6', width=2)
+    ))
+    
+    # Add peaks if available
+    if peaks is not None:
+        fig.add_trace(go.Scatter(
+            x=peaks['Wavenumber'],
+            y=peaks['Transmittance'],
+            mode='markers',
+            name='Peaks',
+            marker=dict(size=8, color='red')
+        ))
+    
+    fig.update_layout(
+        title=title,
+        xaxis_title='Wavenumber (cm⁻¹)',
+        yaxis_title='% Transmittance',
+        template='plotly_white',
+        showlegend=True,
+        xaxis={'autorange': 'reversed'}
+    )
+    
+    return fig
+
+
+
 load_css('styles.css')
+
+# Set page config
+st.set_page_config(
+    page_title="Micro Plastic Database Viewer",
+    page_icon="",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 # Sidebar navigation
 with st.sidebar:
     st.title("Navigation")
-    page = st.radio("", ["Home", "Data Explorer", "Search by Polymer", "About"], key="navigation")
+    page = st.radio("", ["Home", "Data Explorer", "Search by Polymer", "FTIR Viewer", "About"], key="navigation")
     st.session_state.current_page = page.lower()
+
 
 
 # Home Page
@@ -308,7 +384,82 @@ elif st.session_state.current_page == "search by polymer":  # Changed to lowerca
             
     except Exception as e:
         st.error(f"Error processing data: {e}")
-
+# New FTIR Viewer Page
+elif st.session_state.current_page == "ftir viewer":
+    st.title("FTIR Spectrum Viewer")
+    st.markdown("""
+    Upload FTIR spectrum data to visualize and analyze peaks. 
+    Each CSV file should contain two columns: wavenumber and transmittance.
+    """)
+    
+    # File upload section
+    uploaded_files = st.file_uploader(
+        "Upload FTIR CSV files",
+        type="csv",
+        accept_multiple_files=True,
+        help="Each CSV should have two columns: wavenumber and transmittance"
+    )
+    
+    if uploaded_files:
+        # Process uploaded files
+        processor = FTIRProcessor()
+        for file in uploaded_files:
+            try:
+                if file.name not in st.session_state.processed_ftir_files:
+                    df = processor.process_ftir_file(file)
+                    peaks = processor.find_peaks_in_spectrum(df)
+                    st.session_state.processed_ftir_files[file.name] = {
+                        'data': df,
+                        'peaks': peaks
+                    }
+            except Exception as e:
+                st.error(f"Error processing {file.name}: {str(e)}")
+        
+        # Visualization section
+        if st.session_state.processed_ftir_files:
+            view_mode = st.radio(
+                "Select View Mode",
+                ["Individual", "Combined"],
+                disabled=len(st.session_state.processed_ftir_files) < 2
+            )
+            
+            if view_mode == "Individual":
+                selected_file = st.selectbox(
+                    "Select file to visualize",
+                    options=list(st.session_state.processed_ftir_files.keys())
+                )
+                
+                if selected_file:
+                    file_data = st.session_state.processed_ftir_files[selected_file]
+                    spectrum_fig = create_plotly_spectrum(
+                        file_data['data'], 
+                        file_data['peaks'], 
+                        f"FTIR Spectrum - {selected_file}"
+                    )
+                    st.plotly_chart(spectrum_fig, use_container_width=True)
+                    
+                    # Display peak data
+                    st.markdown("### Peak Analysis")
+                    st.dataframe(file_data['peaks'])
+            
+            else:  # Combined view
+                combined_fig = create_plotly_spectrum(
+                    next(iter(st.session_state.processed_ftir_files.values()))['data'],
+                    title="Combined FTIR Spectra"
+                )
+                
+                # Add other spectra
+                for name, file_data in list(st.session_state.processed_ftir_files.items())[1:]:
+                    combined_fig.add_trace(
+                        go.Scatter(
+                            x=file_data['data']['cm-1'],
+                            y=file_data['data']['transmittance'],
+                            name=name
+                        )
+                    )
+                
+                st.plotly_chart(combined_fig, use_container_width=True)
+                
 # About Page
 elif st.session_state.current_page == "about":
     st.title("About")
