@@ -102,7 +102,7 @@ def load_data(file):
 # Set page config
 st.set_page_config(
     page_title="Micro Plastic Database Viewer",
-    page_icon="",
+    page_icon="🔬",  # Add an appropriate emoji or use None
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -459,7 +459,7 @@ elif st.session_state.current_page == "ftir viewer":
                     )
                 
                 st.plotly_chart(combined_fig, use_container_width=True)
-                
+
 # About Page
 elif st.session_state.current_page == "about":
     st.title("About")
