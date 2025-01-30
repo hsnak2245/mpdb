@@ -58,7 +58,7 @@ def check_groq_auth(client):
 
 class FTIRAnalyzer:
     def __init__(self):
-        self.groq_client = Groq(api_key="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")
+        self.groq_client = Groq(api_key="ggsk_cVP61Ll3szI0Iy04iA8IWGdyb3FYVa4L5KI3RMNgrTzmYl8gs0cd")
         with check_groq_auth(self.groq_client) as auth_status:
             self.auth_status = auth_status
 
