@@ -25,7 +25,7 @@ st.set_page_config(
 st.markdown("""
     <style>
     .analysis-card {
-        background-color: blue;
+        background-color: black;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
