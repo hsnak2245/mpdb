@@ -5,9 +5,7 @@
 .stApp {
     background-color: #ffffff;
 }
-.title{
-    color: #333333
-}
+
 .main {
     background-color: #ffffff;
 }
@@ -52,7 +50,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #333333;
+    color: #666666;
 }
 
 .stButton>button {
