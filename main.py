@@ -239,7 +239,13 @@ def create_plotly_spectrum(df: pd.DataFrame,
     )
     
     return fig
-
+    # Load CSS
+    try:
+        with open('styles.css') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        logger.warning("styles.css not found")
+        
 def main():
     """Main application entry point."""
     
