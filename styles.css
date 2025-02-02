@@ -5,7 +5,9 @@
 .stApp {
     background-color: #ffffff;
 }
-
+.title{
+    color: #333333
+}
 .main {
     background-color: #ffffff;
 }
