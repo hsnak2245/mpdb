@@ -74,7 +74,17 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #333333;
+    color: #666666;
+}
+
+/* Streamlit title styling */
+.css-10trblm {  /* This is the class for Streamlit titles */
+    color: #666666 !important;
+}
+
+/* Additional Streamlit header elements */
+.css-1629p8f h1, .css-1629p8f h2, .css-1629p8f h3 {
+    color: #666666 !important;
 }
 
 .stMarkdown a {
