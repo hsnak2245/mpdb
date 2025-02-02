@@ -1,72 +1,65 @@
+
 * {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
 .stApp {
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 .main {
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 .metric-container {
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 4px;
     padding: 1rem;
     margin: 0.5rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .metric-value {
     font-size: 2rem;
     font-weight: bold;
-    color: #333333;
+    color: #ffffff;
 }
 
 .metric-label {
     font-size: 0.9rem;
-    color: #666666;
+    color: #b3b3b3;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .dataset-card {
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 4px;
     padding: 1.5rem;
     margin: 1rem 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
-}
-
-.dataset-card:hover {
-    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .dataset-title {
     font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #666666;
+    color: #ffffff;
 }
 
 .stButton>button {
-    background-color: #ffffff;
-    color: #333333;
-    border: 1px solid #e6e6e6;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #404040;
     padding: 0.5rem 1rem;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 500;
-    transition: all 0.2s ease;
 }
 
 .stButton>button:hover {
-    background-color: #f5f5f5;
-    border-color: #d1d1d1;
-    transform: translateY(-1px);
+    background-color: #404040;
+    border-color: #4d4d4d;
 }
 
 .stSelectbox > div > div {
@@ -74,97 +67,66 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #666666;
-}
-
-/* Streamlit title styling */
-.css-10trblm {  /* This is the class for Streamlit titles */
-    color: #666666 !important;
-}
-
-/* Additional Streamlit header elements */
-.css-1629p8f h1, .css-1629p8f h2, .css-1629p8f h3 {
-    color: #666666 !important;
+    color: #ffffff;
 }
 
 .stMarkdown a {
-    color: #0066cc;
+    color: #00b4d8;
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 .stMarkdown a:hover {
-    color: #0052a3;
+    color: #48cae4;
     text-decoration: underline;
 }
 
 .stSidebar {
-    background-color: #ffffff;
-    border-right: 1px solid #e6e6e6;
+    background-color: #1a1a1a;
 }
 
 .stSidebar .stMarkdown {
     font-family: inherit;
-    color: #333333;
+    color: #ffffff;
 }
 
 p {
-    color: #4d4d4d;
+    color: #e6e6e6;
     line-height: 1.6;
 }
 
 /* Data table styling */
 .dataframe {
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    border: 1px solid #e6e6e6;
-    border-radius: 8px;
-    overflow: hidden;
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
 }
 
 .dataframe th {
-    background-color: #f5f5f5 !important;
-    color: #333333 !important;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 0.75rem 1rem;
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
 }
 
 .dataframe td {
-    background-color: #ffffff !important;
-    color: #4d4d4d !important;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e6e6e6;
+    background-color: #1a1a1a !important;
+    color: #e6e6e6 !important;
 }
 
 /* Radio button and checkbox styling */
 .stRadio > label, .stCheckbox > label {
-    color: #333333 !important;
+    color: #ffffff !important;
 }
+
+
 
 /* Text input styling */
 .stTextInput > div > div > input {
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    border: 1px solid #e6e6e6 !important;
-    border-radius: 8px;
-    padding: 0.5rem;
-    transition: border-color 0.2s ease;
-}
-
-.stTextInput > div > div > input:focus {
-    border-color: #0066cc !important;
-    box-shadow: 0 0 0 2px rgba(0,102,204,0.1);
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
 }
 
 /* Select box styling */
 .stSelectbox > div > div {
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    border: 1px solid #e6e6e6 !important;
-    border-radius: 8px;
-    transition: border-color 0.2s ease;
-}
-
-.stSelectbox > div > div:hover {
-    border-color: #d1d1d1 !important;
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
 }
